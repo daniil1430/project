@@ -2,6 +2,8 @@ import random
 import time
 import statistics
 from main import max_subarray_v1
+from main import max_subarray_v2
+from main import max_subarray_v3
 
 def benchmark(func, arr):
     for i in range(3):
@@ -20,12 +22,27 @@ def random_arr(n):
     return [random.randint(-1000, 1000) for i in range(n)]
 
 def main():
-    size_v1 = [64, 128, 256]
+    size_v1 = [64, 128, 256, 512]
+    size_v2_v3 = [64, 128, 256, 512, 1024, 2048, 4096, 8192]
 
     print("Алгоритм 1")
     for n in size_v1:
         arr = random_arr(n)
         t = benchmark(max_subarray_v1, arr)
+        size_bytes = n * 8
+        print(n, size_bytes,t)
+
+    print("\nАлгоритм 2")
+    for n in size_v2_v3:
+        arr = random_arr(n)
+        t = benchmark(max_subarray_v2, arr)
+        size_bytes = n * 8
+        print(n, size_bytes, t)
+
+    print("\nАлгоритм 3")
+    for n in size_v2_v3:
+        arr = random_arr(n)
+        t = benchmark(max_subarray_v3, arr)
         size_bytes = n * 8
         print(n, size_bytes,t)
 
