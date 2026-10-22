@@ -4,3 +4,19 @@ __pycache__/
 *.png
 *.csv
 .idea/
+
+# Java / IntelliJ
+.idea/
+*.iml
+out/
+
+# Maven
+target/
+*.class
+*.jar
+*.war
+*.ear
+
+# OS
+.DS_Store
+Thumbs.db
