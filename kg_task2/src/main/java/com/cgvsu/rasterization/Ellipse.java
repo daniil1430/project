@@ -17,5 +17,11 @@ public class Ellipse {
     }
 
     public static void drawByBoundingBox(PixelWriter pixelWriter, int x0, int y0, int width, int height, Color color) {
+        int xc = x0 + width / 2;
+        int yc = y0 + height / 2;
+        int a = width / 2;
+        int b = height / 2;
+
+        draw(pixelWriter, xc, yc, a, b, color);
     }
 }
