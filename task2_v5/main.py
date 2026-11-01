@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 from typing import Dict, Type, List
 import csv
 import json
+import xml.etree.ElementTree as ET
 
 
 class IParser(ABC):
@@ -28,3 +29,10 @@ class JSONParser(IParser):
     def parse(self, content: str) -> List[dict]:
         data = json.loads(content)
         return data if isinstance(data, list) else [data]
+
+
+@register("XML")
+class XMLParser(IParser):
+    def parse(self, content: str) -> List[dict]:
+        root = ET.fromstring(content)
+        return [dict(elem.attrib) for elem in root.findall('.//transaction')]
