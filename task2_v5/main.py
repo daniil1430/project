@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import Dict, Type, List
 import csv
+import json
 
 
 class IParser(ABC):
@@ -20,3 +21,10 @@ def register(format_name: str):
 class CSVParser(IParser):
     def parse(self, content: str) -> List[dict]:
         return list(csv.DictReader(content.strip().splitlines()))
+
+
+@register("JSON")
+class JSONParser(IParser):
+    def parse(self, content: str) -> List[dict]:
+        data = json.loads(content)
+        return data if isinstance(data, list) else [data]
