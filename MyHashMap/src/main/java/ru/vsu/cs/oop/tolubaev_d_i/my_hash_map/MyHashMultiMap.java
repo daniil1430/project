@@ -5,11 +5,15 @@ import java.util.List;
 
 public class MyHashMultiMap<K, V> {
 
-    private List<List<K>> keys;
-    private List<List<List<V>>> values;
-    private int size;
+    private List<List<K>> keys = new ArrayList<>();
+    private List<List<List<V>>> values = new ArrayList<>();
+    private int size = 16;
 
     public MyHashMultiMap() {
+        for (int i = 0; i < size; i++) {
+            keys.add(new ArrayList<>());
+            values.add(new ArrayList<>());
+        }
     }
 
     private int hash(K key) {
