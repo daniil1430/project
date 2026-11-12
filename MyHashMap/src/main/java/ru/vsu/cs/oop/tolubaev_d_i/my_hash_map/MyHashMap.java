@@ -17,10 +17,21 @@ public class MyHashMap<K, V> {
     }
 
     private int hash(K key) {
-        return 0;
+        return Math.abs(key.hashCode() % size);
     }
 
     public void put(K key, V value) {
+        int idx = hash(key);
+        List<K> bucketKeys = keys.get(idx);
+        List<V> bucketValues = values.get(idx);
+
+        int pos = bucketKeys.indexOf(key);
+        if (pos >= 0) {
+            bucketValues.set(pos, value);
+        } else {
+            bucketKeys.add(key);
+            bucketValues.add(value);
+        }
     }
 
     public V get(K key) {

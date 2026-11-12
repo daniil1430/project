@@ -17,10 +17,11 @@ public class MyHashMultiMap<K, V> {
     }
 
     private int hash(K key) {
-        return 0;
+        return Math.abs(key.hashCode() % size);
     }
 
     public void put(K key, V value) {
+
     }
 
     public List<V> get(K key) {
