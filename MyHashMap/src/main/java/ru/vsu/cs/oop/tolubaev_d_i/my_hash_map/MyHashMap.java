@@ -35,6 +35,13 @@ public class MyHashMap<K, V> {
     }
 
     public V get(K key) {
+        int idx = hash(key);
+        List<K> bucketKeys = keys.get(idx);
+
+        int pos = bucketKeys.indexOf(key);
+        if (pos >= 0) {
+            return values.get(idx).get(pos);
+        }
         return null;
     }
 
