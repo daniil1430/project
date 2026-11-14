@@ -46,6 +46,16 @@ public class MyHashMap<K, V> {
     }
 
     public boolean remove(K key) {
+        int idx = hash(key);
+        List<K> bucketKeys = keys.get(idx);
+        List<V> bucketValues = values.get(idx);
+
+        int pos = bucketKeys.indexOf(key);
+        if (pos >= 0) {
+            bucketKeys.remove(pos);
+            bucketValues.remove(pos);
+            return true;
+        }
         return false;
     }
 
