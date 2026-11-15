@@ -12,5 +12,11 @@ public class Main {
         map.remove("Виноград");
         System.out.println("После удаления Винограда: " + map.get("Виноград"));
         System.out.println(map);
+
+        MyHashMultiMap<String, String> mm = new MyHashMultiMap<>();
+        mm.put("Лавка 1", "Яблоки");
+        mm.put("Лавка 1", "Арбузы");
+        mm.put("Лавка 2", "Картошка");
+        mm.put("Лавка 2", "Свекла");
     }
 }

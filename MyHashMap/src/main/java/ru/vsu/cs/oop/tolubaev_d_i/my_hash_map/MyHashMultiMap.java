@@ -21,7 +21,19 @@ public class MyHashMultiMap<K, V> {
     }
 
     public void put(K key, V value) {
+        int idx = hash(key);
+        List<K> bucketKeys = keys.get(idx);
+        List<List<V>> bucketValues = values.get(idx);
 
+        int pos = bucketKeys.indexOf(key);
+        if (pos >= 0) {
+            bucketValues.get(pos).add(value);
+        } else {
+            bucketKeys.add(key);
+            List<V> newList = new ArrayList<>();
+            newList.add(value);
+            bucketValues.add(newList);
+        }
     }
 
     public List<V> get(K key) {
