@@ -9,7 +9,8 @@ public class Main {
         System.out.println("Сливы: " + map.get("Сливы"));
         System.out.println("Виноград: " + map.get("Виноград"));
         System.out.println("Бананы: " + map.get("Бананы"));
-        boolean removed1 = map.remove("Виноград");
+        map.remove("Виноград");
         System.out.println("После удаления Винограда: " + map.get("Виноград"));
+        System.out.println(map);
     }
 }

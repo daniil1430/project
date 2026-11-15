@@ -61,6 +61,12 @@ public class MyHashMap<K, V> {
 
     @Override
     public String toString() {
-        return "{}";
+        String res = "{\n";
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < keys.get(i).size(); j++) {
+                res += "  " + keys.get(i).get(j) + " -> " + values.get(i).get(j) + "\n";
+            }
+        }
+        return res + "}";
     }
 }
