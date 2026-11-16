@@ -2,6 +2,7 @@ package ru.vsu.cs.oop.tolubaev_d_i.my_hash_map;
 
 public class Main {
     public static void main(String[] args) {
+        System.out.println("Тест MyHashMap:");
         MyHashMap<String, Integer> map = new MyHashMap<>();
         map.put("Сливы", 7);
         map.put("Виноград", 13);
@@ -13,10 +14,13 @@ public class Main {
         System.out.println("После удаления Винограда: " + map.get("Виноград"));
         System.out.println(map);
 
+        System.out.println("Тест MyHashMultiMap:");
         MyHashMultiMap<String, String> mm = new MyHashMultiMap<>();
         mm.put("Лавка 1", "Яблоки");
         mm.put("Лавка 1", "Арбузы");
         mm.put("Лавка 2", "Картошка");
         mm.put("Лавка 2", "Свекла");
+        System.out.println("Лавка 1: " + mm.get("Лавка 1"));
+        System.out.println("Лавка 2: " + mm.get("Лавка 2"));
     }
 }

@@ -37,6 +37,14 @@ public class MyHashMultiMap<K, V> {
     }
 
     public List<V> get(K key) {
+        int idx = hash(key);
+        List<K> bucketKeys = keys.get(idx);
+        List<List<V>> bucketValues = values.get(idx);
+
+        int pos = bucketKeys.indexOf(key);
+        if (pos >= 0) {
+            return bucketValues.get(pos);
+        }
         return null;
     }
 
