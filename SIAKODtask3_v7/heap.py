@@ -25,7 +25,7 @@ class MinHeap:
     def _right(self, i):
         return 2 * i + 2
 
-    def _swap(self, i: int, j):
+    def _swap(self, i, j):
         self._data[i], self._data[j] = self._data[j], self._data[i]
 
     def _sift_up(self, i):
