@@ -1,8 +1,7 @@
-from typing import List, Tuple
 from heap import MinHeap
 
 
-def merge_files(sizes: List[int]) -> Tuple[List[Tuple[int, int, int]], int]:
+def merge_files(sizes):
     if len(sizes) <= 1:
         return [], 0
 

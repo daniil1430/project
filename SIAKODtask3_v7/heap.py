@@ -1,36 +1,34 @@
-from typing import List, Tuple, Any
-
 class MinHeap:
 
-    def __init__(self, items: List[Tuple[Any, Any]] = None):
-        self._data: List[Tuple[Any, Any]] = []
+    def __init__(self, items = None):
+        self._data = []
         if items:
             self.heapify(items)
 
-    def size(self) -> int:
+    def size(self):
         return len(self._data)
 
-    def is_empty(self) -> bool:
+    def is_empty(self):
         return self.size() == 0
 
-    def peek(self) -> Tuple[Any, Any]:
+    def peek(self):
         if self.is_empty():
             raise IndexError("Куча пуста")
         return self._data[0]
 
-    def _parent(self, i: int) -> int:
+    def _parent(self, i):
         return (i - 1) // 2
 
-    def _left(self, i: int) -> int:
+    def _left(self, i):
         return 2 * i + 1
 
-    def _right(self, i: int) -> int:
+    def _right(self, i):
         return 2 * i + 2
 
-    def _swap(self, i: int, j: int) -> None:
+    def _swap(self, i: int, j):
         self._data[i], self._data[j] = self._data[j], self._data[i]
 
-    def _sift_up(self, i: int) -> None:
+    def _sift_up(self, i):
         while i > 0:
             parent = self._parent(i)
             if self._data[i] < self._data[parent]:
@@ -39,7 +37,7 @@ class MinHeap:
             else:
                 break
 
-    def _sift_down(self, i: int) -> None:
+    def _sift_down(self, i):
         n = self.size()
         while True:
             smallest = i
@@ -57,11 +55,11 @@ class MinHeap:
             else:
                 break
 
-    def push(self, key: Any, value: Any) -> None:
+    def push(self, key, value):
         self._data.append((key, value))
         self._sift_up(self.size() - 1)
 
-    def pop(self) -> Tuple[Any, Any]:
+    def pop(self):
         if self.is_empty():
             raise IndexError("Куча пуста")
         if self.size() == 1:
@@ -72,7 +70,7 @@ class MinHeap:
         self._sift_down(0)
         return min_item
 
-    def replace_top(self, key: Any, value: Any) -> Tuple[Any, Any]:
+    def replace_top(self, key, value):
         if self.is_empty():
             raise IndexError("Куча пуста")
         min_item = self._data[0]
@@ -80,7 +78,7 @@ class MinHeap:
         self._sift_down(0)
         return min_item
 
-    def heapify(self, items: List[Tuple[Any, Any]]) -> None:
+    def heapify(self, items):
         self._data = items[:]
         for i in range(self.size() // 2 - 1, -1, -1):
             self._sift_down(i)
